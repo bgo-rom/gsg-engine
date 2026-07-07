@@ -10,37 +10,38 @@
 
 | Indicateur | Valeur |
 |---|---|
-| **Jalon en cours** | M0 — Fenêtre + carte cliquable (**NON DÉMARRÉ**) |
-| **Dernière mise à jour** | 2026-07-07 — Claude (session bootstrap du framework) |
-| **Build `dotnet build`** | ⚫ N/A — aucune solution .NET créée |
-| **Tests `dotnet test`** | ⚫ N/A — aucun test |
+| **Jalon en cours** | M0 — Fenêtre + carte cliquable (**EN COURS** : socle graphique livré, spec 001) |
+| **Dernière mise à jour** | 2026-07-07 — Claude (livraison spec 001) |
+| **Build `dotnet build`** | 🟢 « La génération a réussi. 0 Avertissement(s) 0 Erreur(s) » |
+| **Tests `dotnet test`** | ⚫ N/A — aucun projet de test (dérogation actée : spec 001 = 100 % code graphique ; `/tests` naît en M1) |
 | **Déterminisme (StateHash headless)** | ⚫ N/A |
-| **Git** | 🔴 Dépôt NON initialisé — aucun commit |
+| **Git** | 🟢 Initialisé, 1 commit (`26fa20f` framework). ⚠️ Spec 001 NON commitée. |
 
 Légende : 🟢 vert (preuve exécutée) · 🔴 rouge / manquant (préciser quoi) · ⚫ N/A (pas encore applicable)
 
 ## 2. DERNIÈRE MODIFICATION EFFECTUÉE
 
-- **Commit** : aucun (git non initialisé).
-- **Contenu** : création complète du Framework de Contexte IA — `CLAUDE.md`, `AGENTS.md`, `CURRENT_STATE.md`, `.editorconfig`, `Directory.Build.props`, `docs/` (TDD, `AI_SOP.md`, `GAME_DICTIONARY.md`, `PROMPT_TEMPLATES.md`, gabarits spec/ADR).
+- **Commit** : aucun pour cette livraison (en attente) — proposé : `feat(app): bootstrap Raylib+ImGui window (spec 001)`.
+- **Contenu** : spec 001 livrée — `gsg_engine.sln`, `src/App/App.csproj` (net8.0 ; Raylib-cs 8.0.0, ImGui.NET 1.91.6.1, rlImgui-cs 3.2.0 ; restore local via `nuget.config` → `.packages/`), `src/App/Program.cs` (fenêtre 1280×720 + démo ImGui, Main explicite), `.gitignore` (bin/obj/.packages), `docs/specs/001_m0_socle_dotnet_raylib.md`. Smoke test exécuté : app vivante après 5 s, arrêt propre.
 
 ## 3. TÂCHE IMMÉDIATE SUIVANTE
 
-1. `git init` + premier commit du framework — message proposé : `chore: bootstrap AI context framework`.
-2. Rédiger `docs/specs/001_m0_carte_cliquable.md` (à partir de `docs/specs/_TEMPLATE_spec.md`), la faire valider.
-3. Dérouler `docs/AI_SOP.md` sur cette spec : solution .NET 8, projets `src/App` + `src/Map` + `tests/`, chargement ColorMap, LookupMap, pan/zoom, Picking.
+1. Committer la livraison spec 001 (message ci-dessus).
+2. Rédiger `docs/specs/002_m0_colormap_picking.md` : projet `src/Map` + `provinces.png` de test, chargement ColorMap → LookupMap, `Camera2D` pan/zoom, Picking (affichage de l'ID de la province cliquée). Créer le projet `tests/` (la logique LookupMap/adjacence est testable sans Raylib via des buffers de pixels).
+3. Dérouler `docs/AI_SOP.md` sur la spec 002 (plan → gate → tests → code).
 
 ## 4. EN COURS / BLOQUÉ
 
-- **En cours** : rien.
+- **En cours** : rien (livraison 001 close).
 - **Bloqué** : rien.
-- **Dérogations actives** : aucune.
+- **Dérogations actives** : spec 001 sans tests xUnit (code graphique uniquement — voir spec).
 
 ## 5. JOURNAL DES SESSIONS (append-only — conserver les 10 dernières lignes)
 
 | Date | Agent | Fait | Résultat |
 |---|---|---|---|
 | 2026-07-07 | Claude | Bootstrap du Framework de Contexte IA (lois, SOP, dictionnaire, templates, state, lint) | Pas de build — aucun code encore |
+| 2026-07-07 | Claude | Spec 001 : sln + src/App (Raylib 8.0.0/ImGui), Program.cs, .gitignore | 🟢 build 0 warn ; smoke test 5 s OK |
 
 ---
 

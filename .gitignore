@@ -1,0 +1,17 @@
+# Sorties de build .NET
+bin/
+obj/
+
+# Cache NuGet local (globalPackagesFolder de nuget.config)
+.packages/
+
+# IDE / outils
+.vs/
+.idea/
+*.user
+*.suo
+
+# Résultats de tests et logs
+TestResults/
+*.binlog
+*.log

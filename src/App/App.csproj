@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Nullable, ImplicitUsings (disable), lint bloquant : hérités de Directory.Build.props.
+       Ne redéclarer AUCUNE de ces propriétés ici (le csproj écraserait la loi commune). -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ImGui.NET" Version="1.91.6.1" />
+    <PackageReference Include="Raylib-cs" Version="8.0.0" />
+    <PackageReference Include="rlImgui-cs" Version="3.2.0" />
+  </ItemGroup>
+
+</Project>
