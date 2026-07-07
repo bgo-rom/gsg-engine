@@ -1,0 +1,36 @@
+<Project>
+  <!-- ==========================================================================
+       Directory.Build.props — L'ARMEMENT DU FIREWALL SYNTAXIQUE (Statut : LOI)
+       Appliqué automatiquement par MSBuild à TOUS les .csproj du dépôt.
+       C'est ici (pas dans .editorconfig, qui ne le peut pas) que vivent :
+       l'interdiction des usings implicites, warnings=erreurs, et l'activation
+       des règles de style .editorconfig comme erreurs de compilation.
+       Modification de ce fichier = ADR obligatoire.
+  =========================================================================== -->
+  <PropertyGroup>
+    <LangVersion>12.0</LangVersion>
+    <Nullable>enable</Nullable>
+
+    <!-- INTERDICTION des usings implicites : chaque fichier déclare TOUS ses
+         usings. Un agent IA voit ainsi ses dépendances réelles, et un
+         "using Raylib_cs" qui apparaît dans src/Core est visible en revue. -->
+    <ImplicitUsings>disable</ImplicitUsings>
+
+    <!-- Tout warning est une erreur : pas de dette "on verra plus tard". -->
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+
+    <!-- Arme les règles IDExxxx / IDE1006 (nommage) du .editorconfig au build.
+         Sans cette ligne, le firewall syntaxique n'existe pas en CI. -->
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <AnalysisLevel>latest</AnalysisLevel>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+
+    <!-- Requis pour que IDE0005 (using inutile) soit détecté au build.
+         CS1591 (doc XML manquante) est exclu : on n'exige pas de doc XML. -->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+
+    <!-- Build reproductible (même source = même binaire). -->
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+</Project>
